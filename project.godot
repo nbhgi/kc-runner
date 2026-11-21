@@ -1,0 +1,24 @@
+; 文件名：project.godot
+; 干什么：Godot 工程的总配置。打开这个文件时 Godot 就知道这是个 3D 项目、
+;        竖屏、用哪个场景当启动场景。分号是注释。
+
+config_version=5
+
+[application]
+config/name="KC Runner"                 ; 游戏名字
+run/main_scene="res://scenes/gate.tscn" ; 启动第一场景 = 卡密门
+config/features=PackedStringArray("4.2", "GL Compatibility")
+
+[rendering]
+renderer/rendering_method="gl_compatibility" ; 兼容性渲染：老手机也能跑，代价是效果简单
+renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_3d=0              ; 关掉抗锯齿，省性能
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0 ; 关软阴影
+
+[display]
+window/size/viewport_width=720              ; 竖屏分辨率 720x1280
+window/size/viewport_height=1280
+window/handheld/orientation=1               ; 1 = 竖屏（portrait）
+
+[input_devices]
+pointing/emulate_touch_from_mouse=true      ; 电脑上用鼠标模拟手指，方便调试
