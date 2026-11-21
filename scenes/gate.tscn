@@ -1,0 +1,29 @@
+; 文件名：scenes/gate.tscn
+; 场景结构：
+;   Gate（Node2D，根，挂 gate.gd）  卡密门逻辑
+;   ├─ CardInput（LineEdit）         输入框，玩家在这里粘贴卡密
+;   ├─ Tip（Label）                  提示文字（错误、状态）
+;   └─ HTTP（HTTPRequest）           发网络请求到你的 Worker
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/gate.gd" id="1"]
+
+[node name="Gate" type="Node2D"]
+script = ExtResource("1")
+
+[node name="CardInput" type="LineEdit" parent="."]
+offset_left = 120.0
+offset_top = 560.0
+offset_right = 600.0
+offset_bottom = 620.0
+placeholder_text = "输入卡密 KC3D1-XXXX-XXXX-XXXX"
+
+[node name="Tip" type="Label" parent="."]
+offset_left = 60.0
+offset_top = 440.0
+offset_right = 660.0
+offset_bottom = 520.0
+text = "KC Runner
+输入卡密开始游戏"
+
+[node name="HTTP" type="HTTPRequest" parent="."]
