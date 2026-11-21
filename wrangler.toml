@@ -1,0 +1,17 @@
+# 文件名：wrangler.toml
+# 干什么：Cloudflare Workers 的部署配置。
+# 命令行部署时（`wrangler deploy`）会读它；网页版部署可以不传这个文件，
+# 但保留它方便你以后换机器、用命令行一键发版。
+
+name = "kc-card-service"          # Worker 的名字，自己可改
+main = "worker.js"                # 入口文件
+compatibility_date = "2024-11-01" # 固定运行时版本，避免以后接口变动
+
+# 【重要】KV 绑定：变量名必须叫 CARDS，和 worker.js 里 env.CARDS 对应
+[[kv_namespaces]]
+binding = "CARDS"
+id = "把你的KV_ID填这里"           # 网页版部署时不用管；命令行部署要填真实 ID
+
+# 下面两个敏感变量不要在文件里写死，去后台「设置 → 变量」里配：
+#   SIGN_KEY  = 一串随机字符（客户端 gate.gd 里要填一样的值）
+#   ADMIN_KEY = 发卡口令，自己记住
