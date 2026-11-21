@@ -1,0 +1,7 @@
+# Godot 的本地缓存和导入文件，不用进仓库
+.godot/
+.import/
+exports/
+*.tmp
+# 密钥别推上去（如果你本地建了 .env）
+.env
