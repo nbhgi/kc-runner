@@ -1,0 +1,27 @@
+; 文件名：scenes/runner.tscn
+; 场景结构：
+;   Runner（Node3D，根，挂 runner.gd） 游戏世界根
+;   ├─ Camera（Camera3D）              摄像机，斜着俯视跑道
+;   ├─ Light（DirectionalLight3D）     方向光 = 太阳
+;   └─ Player（CharacterBody3D）       玩家，自带碰撞和移动
+;      └─ Mesh（MeshInstance3D）       玩家外形（用盒子代替，方便看懂）
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/runner.gd" id="1"]
+[sub_resource type="BoxMesh" id="BoxMesh_1"]
+
+[node name="Runner" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.94, 0.34, 0, -0.34, 0.94, 0, 6, 8)
+current = true
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7, 0.7, 0, -0.7, 0.7, 0, 10, 5)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("BoxMesh_1")
